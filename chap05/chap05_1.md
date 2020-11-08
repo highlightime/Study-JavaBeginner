@@ -78,12 +78,85 @@ names2 = new String[]{"kim","seo","lee"};
 // 메소드 매개값 배열일 경우
 int result = add ({95,80,20}) // compile error
 int result = add (new int[]{95,80,20});
+
+// 저장 배열 미리 만들고 싶은 경우
+int[] scores = new int[30]; 
 ```
 
 - 값 목록 이용시, 배열 변수 선언 후 다른 시랭문에서 중괄호 사용한 배열 생성 안 됨
 - ***배열 변수 미리 선언 후 값이 나중에 결정되는 상황*** => new 연산자 사용
 - ***매소드의 매개값이 배열일 경우*** => new 연산자 사용
 - ***값 목록 모르지만 향후 저장 배열 미리 만들고 싶은 경우*** => new 연산자 사용
+- New 이용시 배열 자동으로 기본값 ( 0 || false || null ) 으로 초기화됨 
+
+
+
+### 배열 길이
+
+```java
+int[] ary = {10,20,30};
+int num = ary.length; // 읽기 전용 필드기 때문에 값 쓰기 불가
+```
+
+### 배열의 인덱스 초과해서 사용시 에러
+
+```java
+ArrayIndexOutOfBoundException // 배열의 인덱스 0 ~ (length-1)
+```
+
+### 명령 라인 입력
+
+```java
+public static void main(Strin[] args){}
+```
+
+[ JDK 11 ~ ] java -p . -m 모듈명/패키지 arg0 arg1 arg2 arg3 ...
+
+[~ JDK 8 ] java 패키지 arg0 arg1 arg2 arg3 ...
+
+[Eclipse] Run - Run Configurations - Main - Project - Main class - Arguments
+
+### 정수로 변환할 수 없는 문자열 주어질 경우 에러
+
+```java
+NumberFormatException
+```
+
+### 배열 복사
+
+- 배열 생성시 크기 변경 불가능
+- 더 많은 저장 공간 필요시 더 큰 배열 새로 만들고 복사
+- for문 || System.arraycopy()
+
+```java
+System.arraycopy(arr1, 0, arr2, arr1.length);
+```
+
+### For문 심화
+
+- 배열, 컬렉션 처리 쉽게
+
+```java
+int[] scores={1,2,3,4,5,6,7};
+for(int score: scores){
+  sum += score;
+}
+```
+
+
 
 ## 05-3 열거 타입
+
+### 열거 타입
+
+- 한정된 값만 갖는 타입 (봄,열,갈,결)
+
+```java
+public enum Week{
+  SPRING,
+  SUMMER,
+  AUTUMN,
+  WINTER
+}
+```
 
